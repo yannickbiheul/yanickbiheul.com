@@ -1,0 +1,256 @@
+/* ---------- GENERAL ---------- */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 62.5%;   /* 1rem = 10px */
+    font-family: 'Quicksand', sans-serif;
+}
+
+:root {
+    --blue: #004e92;
+}
+
+
+
+/* ---------- MENU BURGER ---------- */
+
+.boutonBurger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    /* border: 1px solid #fff; */
+    cursor: pointer;
+    display: none;
+    z-index: 50;
+}
+
+.ligne {
+    width: 95%;
+    height: 4px;
+    border-radius: 5px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0ms 300ms;
+}
+
+.ligne::before {
+    content: "";
+    position: absolute;
+    bottom: 12px;
+    background-color: #fff;
+    width: 100%;
+    height: 4px;
+    border-radius: 5px;
+    transition: bottom 300ms 300ms ease, transform 300ms ease;
+}
+
+.ligne::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    background-color: #fff;
+    width: 100%;
+    height: 4px;
+    border-radius: 5px;
+    transition: top 300ms 300ms ease, transform 300ms ease;
+}
+
+.boutonBurger.active .ligne::after {
+    top: 0;
+    transform: rotate(45deg);
+    transition: top 300ms ease, transform 300ms 300ms ease;
+}
+
+.boutonBurger.active .ligne {
+    background: transparent;
+}
+
+.boutonBurger.active .ligne::before {
+    bottom: 0;
+    transform: rotate(-45deg);
+    transition: bottom 300ms ease, transform 300ms 300ms ease;
+}
+
+.menuBurger {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(to right, #004e92, #000428);
+    color: #fff;
+    z-index: 40;
+    left: -100vw;
+    transition-duration: 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.menuBurger a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 2rem;
+    margin: 1rem 0 1rem 0;
+}
+
+.menuBurgerOpen {
+    left: 0;
+}
+
+
+
+/* ---------- HEADER ---------- */
+
+header {
+    width: 100%;
+    height: 6rem;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+
+/* ---------- NAVIGATION ---------- */
+
+nav {
+    /* border: 1px solid #000; */
+    font-size: 1.8rem;
+    padding: 1rem;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    margin: 0 1rem 0 1rem;
+    opacity: 0.9;
+}
+
+nav a:hover {
+    opacity: 1;
+}
+
+
+
+/* ---------- SECTION ACCUEIL ---------- */
+
+.accueil {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to right, #000428, #004e92); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titre {
+    /* border: 1px solid #fff; */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85%;
+    height: 75%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+/* ----- TITRE ----- */
+
+.titre h1 {
+    grid-column: 2 / span 2;
+    grid-row: 2 / span 1;
+    text-align: center;
+    color: #fff;
+    font-size: 7rem;
+    text-shadow: -4px 4px 4px #000;
+}
+
+/* ----- PARAGRAPHE ----- */
+
+.titre p {
+    grid-column: 2 / span 2;
+    grid-row: 3 / span 1;
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    position: relative;
+    bottom: 4rem;
+}
+
+/* ----- BOUTON ----- */
+
+.boutons {
+    grid-column: 2 / span 2;
+    grid-row: 4 / span 1;
+    /* border: 1px solid #fff; */
+    width: 15rem;
+    height: 5rem;
+    margin: auto;
+    position: relative;
+    bottom: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boutons button {
+    padding: 2rem;
+    border: none;
+    background-color: var(--blue);
+    color: #fff;
+    box-shadow: -4px 4px 4px #000;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5rem;
+    outline: none;
+}
+
+.boutons button:hover {
+    padding: 2.2rem;
+    font-size: 1.6rem;
+}
+
+
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+
+@media screen and (max-width: 500px) {
+    .boutonBurger {
+        display: flex;
+    }
+    
+    header {
+        display: none;
+    }
+
+    .titre h1 {
+        grid-column: 1 / span 4;
+        grid-row: 1 / span 1;
+        font-size: 6rem;
+    }
+
+    .titre p {
+        grid-column: 1 / span 4;
+        grid-row: 2 / span 1;
+        font-size: 1.8rem;
+    }
+
+    .boutons {
+        grid-column: 1 / span 4;
+        grid-row: 4 / span 1;
+        bottom: 6rem;
+    }
+}
