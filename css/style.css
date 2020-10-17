@@ -6,6 +6,7 @@ html, body {
     box-sizing: border-box;
     font-size: 62.5%;   /* 1rem = 10px */
     font-family: 'Quicksand', sans-serif;
+    scroll-behavior: smooth;
 }
 
 :root {
@@ -117,6 +118,10 @@ header {
     justify-content: space-between;
     align-items: center;
     /* border: 1px solid #fff; */
+}
+
+.headerActif {
+    background-color: #000428;
 }
 
 header h2 {
@@ -238,6 +243,14 @@ nav a:hover {
 
 
 
+/* ---------- SECTION PRESENTATION ---------- */
+
+#presentation {
+    height: 100vh;
+}
+
+
+
 /* ---------- RESPONSIVE DESIGN ---------- */
 
 @media screen and (max-width: 500px) {
@@ -264,6 +277,6 @@ nav a:hover {
     .boutons {
         grid-column: 1 / span 4;
         grid-row: 4 / span 1;
-        bottom: 6rem;
+        bottom: 10rem;
     }
 }
